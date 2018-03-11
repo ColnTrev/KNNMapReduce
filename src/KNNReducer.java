@@ -14,7 +14,7 @@ public class KNNReducer extends Reducer<Vector2, Vector2,Vector2,Vector2>{
 
         // Tally the counts of each label
         for(Vector2 vec : values){
-            labels.put(vec.getLabel(), labels.getOrDefault(vec.getLabel(), 1));
+            labels.put(vec.getLabel(), labels.getOrDefault(vec.getLabel(), 0) + 1);
         }
 
         // Sort them by occurences in ascending order
