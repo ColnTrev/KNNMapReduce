@@ -7,7 +7,7 @@ import java.util.*;
 /**
  * Created by colntrev on 3/11/18.
  */
-//TODO: Emit Text not Vector2
+
 public class KNNReducer extends Reducer<Vector2, Vector2,Text,Vector2>{
     @Override
     protected void reduce(Vector2 key, Iterable<Vector2> values, Context context) throws IOException, InterruptedException {

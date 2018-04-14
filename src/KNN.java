@@ -44,7 +44,7 @@ public class KNN {
 
         job.setMapOutputKeyClass(Vector2.class);
         job.setMapOutputValueClass(Vector2.class);
-        job.setOutputKeyClass(Vector2.class); // TODO: change to text class
+        job.setOutputKeyClass(Text.class);
         job.setOutputValueClass(Vector2.class);
 
         job.setInputFormatClass(TextInputFormat.class);
@@ -53,7 +53,11 @@ public class KNN {
         FileInputFormat.addInputPath(job, in);
         FileOutputFormat.setOutputPath(job, out);
 
+        long startTime = System.currentTimeMillis();
         int status = job.waitForCompletion(true)? 0 : 1;
+        long endTime = System.currentTimeMillis();
+        
+        System.out.println("Elapsed Time: " + (endTime - startTime));
         System.exit(status);
 
     }
