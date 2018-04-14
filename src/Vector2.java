@@ -56,4 +56,15 @@ public class Vector2 implements WritableComparable<Vector2> {
     public void readFields(DataInput dataInput) throws IOException {
 
     }
+
+    @Override
+    public String toString(){
+        StringBuilder sb = new StringBuilder();
+        sb.append(point[0]);
+        sb.append(',');
+        sb.append(point[1]);
+        sb.append(' ');
+        sb.append(label);
+        return sb.toString();
+    }
 }

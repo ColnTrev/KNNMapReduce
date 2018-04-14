@@ -1,3 +1,4 @@
+import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Reducer;
 
 import java.io.IOException;
@@ -7,7 +8,7 @@ import java.util.*;
  * Created by colntrev on 3/11/18.
  */
 //TODO: Emit Text not Vector2
-public class KNNReducer extends Reducer<Vector2, Vector2,Vector2,Vector2>{
+public class KNNReducer extends Reducer<Vector2, Vector2,Text,Vector2>{
     @Override
     protected void reduce(Vector2 key, Iterable<Vector2> values, Context context) throws IOException, InterruptedException {
         Map<String, Integer> labels = new HashMap<>();
@@ -29,6 +30,6 @@ public class KNNReducer extends Reducer<Vector2, Vector2,Vector2,Vector2>{
         // label our data with that label
         // and write it
         key.setLabel(occurences.get(res));
-        context.write(key,null);
+        context.write(new Text(key.toString()),null);
     }
 }
